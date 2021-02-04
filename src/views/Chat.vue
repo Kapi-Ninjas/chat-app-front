@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-for="(msg, i) in messages" :key="i">
-      <div>{{ msg }}</div>
+      <div v-bind:class="{ warning: msg.username === 'Admin' }">
+        {{ msg.username }}: {{ msg.message }}
+      </div>
     </div>
     <form @submit.prevent="send">
       <input type="text" name="message" v-model="message" />
@@ -18,12 +20,16 @@ import { Component } from 'vue-property-decorator';
 export default class Chat extends Vue {
   message = '';
 
-  messages: string[] = [];
+  messages: { username: string; message: string }[] = [];
 
   mounted() {
-    this.$socket.on('receive', (message: string) => {
-      this.messages.push(message);
-    });
+    this.$socket
+      .on('receive', (username: string, message: string) => {
+        this.messages.push({ username, message });
+      })
+      .on('register', (username: string) => {
+        this.messages.push({ username: 'Admin', message: `${username} has just entered the chat!` });
+      });
   }
 
   send() {
@@ -32,3 +38,9 @@ export default class Chat extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.warning {
+  color: red;
+}
+</style>

@@ -5,7 +5,7 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
-const socket = io('http://localhost:3333', { transports: ['websocket'] });
+const socket = io('http://adbf353a2213.ngrok.io', { transports: ['websocket'] });
 Vue.prototype.$socket = socket;
 
 new Vue({
