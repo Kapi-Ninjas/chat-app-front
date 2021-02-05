@@ -1,21 +1,19 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <router-link to="/chat">Chat</router-link> -->
-    </div>
-    <router-view/>
+  <div class="container">
+    <router-view />
   </div>
 </template>
 
-<style lang="scss">
-body {
+<style lang="scss" scoped>
+div.container {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2D3436;
+}
+</style>
+
+<style lang="scss">
+body {
+  margin: 0;
+  background-color: #121212;
 }
 </style>
