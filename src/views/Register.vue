@@ -24,3 +24,13 @@ export default class Register extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+input {
+  width: 500px;
+  height: 30px;
+  border: 3px solid #dfe6e9;
+  border-radius: 4px;
+  background-color: #2D3436;
+}
+</style>
